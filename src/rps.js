@@ -24,9 +24,14 @@ Game.prototype.winner = function(player1, player2) {
     return this.player1;
   };
 
-  if (Game.winner !== player1){
+  if (player1.pick === player2.pick){
+    return null
+  };
+
+  if ((player1.pick !== player2.pick) && Game.winner !== player1){
     return this.player2;
-  }
+  };
+
 
 };
 
