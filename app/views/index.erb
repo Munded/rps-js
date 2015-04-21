@@ -1,4 +1,13 @@
- <% if !current_user %>
+<div class="background"> <% if current_user %>
+  <h4>Welcome, <%= current_user.user_name %></h4>
+  <form method="post" action="/sessions">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Sign out">
+  </form>
+  <form method="post" action="/game/new">
+    <input type="submit" value="Create Game">
+  </form>
+  <% else %>
      <h3>Welcome to Rock Paper Scissors</h3>
     <form method="get" action="/sessions/new">
       <input type="submit" value="Sign In">
@@ -6,4 +15,5 @@
     <form method="get" action="/user/new">
       <input type="submit" value="Sign Up">
     </form>
- <% end %>
+<% end %>
+</div>
