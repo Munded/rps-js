@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+ <div class="background"> <% if current_user %>
+  <h4>Welcome, <%= current_user.user_name %></h4>
+  <form method="post" action="/sessions">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Sign out">
+  </form>
+  <% else %>
+     <h3>Welcome to Rock Paper Scissors</h3>
+    <form method="get" action="/sessions/new">
+      <input type="submit" value="Sign In">
+    </form>
+    <form method="get" action="/user/new">
+      <input type="submit" value="Sign Up">
+    </form>
+<% end %>
+</div>
+<% if flash[:notice] %>
+  <div id='notice'>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<% if flash[:errors] && !flash[:errors].empty? %>
+  Sorry, there were the following problems with the form.
+  <ul id="errors">
+  <% flash[:errors].each do |error| %>
+    <li><%= error %></li>
+<% end %>
+</div>
+</ul>
+<% end %>
+  <%= yield %>
+</body>
+</html>

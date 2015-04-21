@@ -1,0 +1,9 @@
+ <% if !current_user %>
+     <h3>Welcome to Rock Paper Scissors</h3>
+    <form method="get" action="/sessions/new">
+      <input type="submit" value="Sign In">
+    </form>
+    <form method="get" action="/user/new">
+      <input type="submit" value="Sign Up">
+    </form>
+ <% end %>

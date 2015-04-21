@@ -1,5 +1,6 @@
 function Player(name){
   this.name = name;
+  this.pick = "";
 };
 
 Player.prototype.picks = function(choice) {
