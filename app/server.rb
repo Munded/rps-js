@@ -4,6 +4,7 @@ require 'tilt/erb'
 require_relative 'data_mapper_setup'
 require_relative 'helpers/application'
 require_relative 'models/user'
+require_relative 'models/game'
 
 class RockPaperScissors < Sinatra::Base
 

@@ -4,8 +4,6 @@ class User
 
   include DataMapper::Resource
 
-  has 1, :game, through: Resource
-
   property :id, Serial
   property :user_name, String, unique: true,
                                message: 'This Username is already taken'

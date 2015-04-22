@@ -2,9 +2,9 @@ class Game
 
   include DataMapper::Resource
 
-  has n, :user, through: Resource
+  property :id, Serial
 
-  property :player1, Serial
-  property :player2, Serial
+  belongs_to :player1, 'User'
+  belongs_to :player2, 'User'
 
 end
