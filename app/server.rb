@@ -6,6 +6,8 @@ require_relative 'helpers/application'
 require_relative 'models/user'
 require_relative 'models/game'
 
+set :public_folder, proc { File.join(root) }
+
 class RockPaperScissors < Sinatra::Base
 
   include Helpers
@@ -15,6 +17,10 @@ class RockPaperScissors < Sinatra::Base
 
   use Rack::Flash
   use Rack::MethodOverride
+
+  # get '/' do
+  #   erb :index
+  # end
 
   # start the server if ruby file executed directly
   run! if app_file == $PROGRAM_NAME

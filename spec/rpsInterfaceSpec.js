@@ -3,6 +3,8 @@ describe('rock-paper-scissors interface', function(){
     var player1
 
   beforeEach(function() {
+    jasmine.getFixtures().fixturesPath = './';
+    loadFixtures('index.html');
     player1 = new Player('Ed');
   });
 
@@ -10,7 +12,8 @@ describe('rock-paper-scissors interface', function(){
 
     it('can pick Rock', function(){
       $('#buttonRock').click();
-      expect(player1.pick).toBe('rock')
+      console.log(player1)
+      expect('#choice').toContainText('rock')
     });
 
     it('can pick Paper', function(){

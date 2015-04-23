@@ -2,10 +2,20 @@ function Player(name){
   this.name = name;
   this.pick = "";
   this.winCount = 0
+  this.isWon = false
 };
 
 Player.prototype.picks = function(choice) {
   this.pick = choice;
+};
+
+
+function Player2(){
+  this.win_count = 0
+  var choice = [
+  'rock', 'paper', 'scissors'
+  ];
+  this.pick = choice[Math.floor(Math.random()*choice.length)];
 };
 
 function Game(player1, player2){
@@ -43,11 +53,14 @@ Game.prototype.winner = function(player1, player2) {
 
 Game.prototype.hasWon = function(player1, player2) {
   if(player1.winCount === 3){
+    player1.hasWon = true
     return "Player 1 has won"
   } 
   else if(player2.winCount === 3){
     return "Player 2 has won"
+    player2.hasWon = true
   }
   else{return nil}
 };
+
 

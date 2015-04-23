@@ -1,17 +1,20 @@
 class RockPaperScissors
 
   post '/game/new' do
-    @game = Game.create(player1: current_user,
-                        player2: current_user)
-    erb :'game/new'
+    Game.create(player1: current_user,
+                player2: current_user)
+    redirect to '/game'
   end
 
   post '/game/join' do
-    ejs :'game/play'
+    Game.update(player2_id: current_user)
+    redirect to '/game'
   end
 
-  get '/game/play' do
-    ejs :'game/play'
+  get '/game' do
+    user = User.first(id: session[:user_id])
+    @game = Game.first(player1: user) || Game.first(player2: user)
+    erb :game
   end
 
 end
